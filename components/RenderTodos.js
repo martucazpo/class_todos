@@ -2,7 +2,7 @@ import EditTodoForm from "./EditTodoForm.js"
 import RenderLi from "./RenderLi.js"
 
 
-const RenderTodos = (arr, deleteTodos, handleInput, handleEdit, editTodos, isEdit,id) =>{
+const RenderTodos = (arr, props, state) =>{
     if(arr.length <= 0){
         let messageDiv = document.createElement("div")
         messageDiv.classList = "message-div"
@@ -13,11 +13,11 @@ const RenderTodos = (arr, deleteTodos, handleInput, handleEdit, editTodos, isEdi
     } else {
         let ul = document.createElement("ul")
     for(let i = 0; i < arr.length; i++){
-        if(arr[i].id === id && isEdit){
-           let form = EditTodoForm(arr[i], handleInput, handleEdit)
+        if(arr[i].id === state.editId && state.isEdit){
+           let form = EditTodoForm(arr[i], props)
            ul.append(form) 
         } else {
-            let li = RenderLi(arr[i], deleteTodos, editTodos)
+            let li = RenderLi(arr[i], props)
             ul.append(li)
         }
         

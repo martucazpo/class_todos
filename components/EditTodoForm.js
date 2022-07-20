@@ -1,13 +1,13 @@
-const EditTodoForm = (obj, handleInput, handleEdit) =>{
+const EditTodoForm = (obj, props) =>{
     let form = document.createElement("form")
     form.classList.add("edit-form")
-    form.onsubmit = (e)=>handleEdit(e,obj.id)
+    form.onsubmit = (e)=>props.handleEdit(e,obj.id)
     let editInput = document.createElement("input")
     editInput.setAttribute("name", "task")
     editInput.setAttribute("id", "edit")
     editInput.setAttribute("type", "text")
     editInput.value = obj.task
-    editInput.addEventListener("input", handleInput)
+    editInput.addEventListener("input", props.handleInput)
     let editLabel = document.createElement("label")
     editLabel.setAttribute("for", "edit")
     editLabel.innerText = "Edit"

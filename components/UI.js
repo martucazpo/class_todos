@@ -1,30 +1,25 @@
-import Header from "./Header.js"
+import Header from "./Header.js";
 import AddTodoForm from "./AddTodoForm.js";
 import RenderTodos from "./RenderTodos.js";
 import Storage from "./Storage.js";
 import { uuidv4 } from "../javascript/UUIDv4.js";
 
 const state = {
-  isEdit: false,
-  editId: "",
-  task: "",
-};
-
+      isEdit: false,
+      editId: "",
+      task: "",
+    };
 
 class UI {
   static renderSomething() {
     document.getElementById("root").innerHTML = "";
     let todos = Storage.getTodos();
-    const header = Header()
-    const addTaskForm = AddTodoForm(this.handleSubmit, this.handleInput);
+    const header = Header();
+    const addTaskForm = AddTodoForm(props);
     const ul = RenderTodos(
       todos,
-      this.deleteTodos,
-      this.handleInput,
-      this.handleEdit,
-      this.editTodos,
-      state.isEdit,
-      state.editId
+      props,
+      state
     );
     document.getElementById("root").append(header);
     document.getElementById("root").append(addTaskForm);
@@ -76,6 +71,14 @@ class UI {
     state.task = "";
     UI.renderSomething();
   }
+}
+
+const props = {
+  handleInput: UI.handleInput,
+  handleSubmit: UI.handleSubmit,
+  handleEdit: UI.handleEdit,
+  editTodos: UI.editTodos,
+  deleteTodos: UI.deleteTodos
 }
 
 export default UI;
