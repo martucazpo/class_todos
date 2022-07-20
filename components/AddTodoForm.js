@@ -19,7 +19,7 @@ const AddTodoForm = (handleSubmit, handleInput) =>{
         form.append(addTaskLabel)
         form.append(addTaskInput)
         form.append(addTaskButton)
-        document.getElementById("root").append(form)
+        return form
 }
 
 export default AddTodoForm
